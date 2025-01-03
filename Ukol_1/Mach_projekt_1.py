@@ -8,6 +8,8 @@ email: machi@vscht.cz
 
 # Import zdrojových textů
 import task_template
+import re
+
 """
 Import textů ze souboru "task_template.py"
 (pozor, soubor se zdrojovými texty musí být ve stejné složce
@@ -74,7 +76,8 @@ else:
 # Načtení textu dle volby uživatele
 text = task_template.TEXTS[user_number - 1]
 words = text.split()
-words = [word_w.rstrip(",.!?;#@_") for word_w in words]
+# words = [word_w.rstrip(",.!?;#@_") for word_w in words]
+words = [re.sub(r"[^\w]", "", word_w) for word_w in words]
 
 # Analýza textu 
 for word in words:
