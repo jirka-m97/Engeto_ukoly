@@ -30,6 +30,9 @@ dashed_line_len = 40
 # Definice vlastních funkcí
 def dashed_line():
     print("-"*dashed_line_len)
+
+def dashed_line_table(len_line):
+    print("-"*len(len_line))
     
 # Registrovaní uživatelé
 users = {
@@ -105,11 +108,17 @@ print(f"There are {words_num} numeric strings.")
 print(f"The sum of all the numbers is {sum_num}.")
 dashed_line()
 
+# Výpis tabulky (histogram)
+print("# HISTOGRAM #")
 col_width = max(words_dict.values()) + 1
+header = f"LEN|{'OCCURRENCES'.center(col_width)}|NR."
 
-print(f"LEN|{'OCCURRENCES'.center(col_width)}|NR.")
-dashed_line()
+dashed_line_table(header)
+print(header)
+dashed_line_table(header)
 
 for word_len, word_occur in sorted(words_dict.items()):
     word_occur_grapical = "*"*int(word_occur)
     print(f"{word_len:3}|{word_occur_grapical:<{col_width}}|{word_occur}")
+
+dashed_line_table(header)
